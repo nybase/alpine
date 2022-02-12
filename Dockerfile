@@ -7,8 +7,8 @@ ENV TZ=Asia/Shanghai LANG=C.UTF-8
 RUN set -eux; addgroup -g 8080 app ; adduser -u 8080 -S -G app app ;\
     sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories ;\
     apk add --no-cache bash busybox-extras ca-certificates curl wget iproute2 runit dumb-init gnupg libcap openssl su-exec iputils jq libc6-compat iptables tzdata \
-        procps  iputils  wget tzdata less   unzip  tcpdump  net-tools socat   jq mtr psmisc logrotate  tomcat-native \
-        iftop runit pcre-dev pcre2-dev  openssh-client-default  luajit luarocks \
+        procps  iputils  wget tzdata less   unzip  tcpdump  net-tools socat jq mtr psmisc logrotate  tomcat-native \
+        runit pcre-dev pcre2-dev  openssh-client-default  luajit luarocks iperf3 wrk atop htop iftop \
         openjdk11-jdk consul vim ;\
     TOMCAT_VER=`curl --silent http://mirror.vorboss.net/apache/tomcat/tomcat-9/ | grep v9 | awk '{split($5,c,">v") ; split(c[2],d,"/") ; print d[1]}'` ;\
     echo $TOMCAT_VER; wget -N http://mirror.vorboss.net/apache/tomcat/tomcat-9/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz -P /tmp ;\
